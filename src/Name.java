@@ -11,6 +11,7 @@ public class Name {
 
     public Name(String firstName, String lastName) {
         this.firstName = firstName;
+        this.middleName = "";
         this.lastName = lastName;
     }
 
@@ -38,5 +39,12 @@ public class Name {
         this.lastName = lastName;
     }
 
-
+    public String toString() {
+        if (!getMiddleName().equals("")) {
+            return getFirstName() + " " + getMiddleName() + " " + getLastName() + "\n";
+        }
+        else {
+            return getFirstName() + " " + getLastName() + "\n";
+        }
+    }
 }
