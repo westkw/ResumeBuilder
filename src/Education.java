@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class Education extends TitleDescription {
     private String major;
@@ -104,6 +104,14 @@ public class Education extends TitleDescription {
                     getTitle() + "\n";
         }
 
+    }
+
+    public String eduListString(ArrayList<Education> educations) {
+        StringBuilder result = new StringBuilder();
+        for (Education education : educations) {
+            result.append(education.toString());
+        }
+        return result.toString();
     }
 
 }

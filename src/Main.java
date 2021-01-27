@@ -1,89 +1,60 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    //The main class that runs the resume builder
 
+    //The main class that runs the resume builder
     public static void main(String[] args) {
+        ResumeFactory resumeFactory = new ResumeFactory();
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("*First Name: ");
-        String firstName = sc.nextLine();
+        System.out.println("Welcome to ResumeBuilder!");
+        System.out.println();
+        System.out.println("Please type in what oder you would like " +
+                "to create your resume.");
+        System.out.println("Your options are: ");
+        System.out.println("1. Name");
+        System.out.println("2. Personal Summary");
+        System.out.println("3. Educations");
+        System.out.println("4. Experience");
+        System.out.println("5. Projects");
+        System.out.println("6. Skills");
+        System.out.println("Input format should be in the form " +
+                "of a spaced list.");
+        System.out.println("Example \"1 2 3 4 5 6\"");
+        System.out.println("Each part of the resume is optional.");
+        System.out.println("Example \"1 3 5 6\" also works.");
 
-        System.out.print("Middle Name: ");
-        String middleName = sc.nextLine();
+        System.out.print("You're resume order: ");
+        String userOrder = sc.nextLine();
 
-        System.out.print("*Last Name: ");
-        String lastName = sc.nextLine();
-        Name name;
-        if (!middleName.equals("")) {
-            name = new Name(firstName, middleName, lastName);
-        } else {
-            name = new Name(firstName, lastName);
+        String[] numberStrs = userOrder.split(" ");
+        int[] numbers = new int[numberStrs.length];
+        for(int i = 0;i < numberStrs.length;i++)
+        {
+            numbers[i] = Integer.parseInt(numberStrs[i]);
         }
-
-
-        String finished = "n";
-        StringBuilder summary = new StringBuilder();
-        while (finished.equals("n")) {
-            System.out.println("Summary: ");
-            summary.append(sc.nextLine());
-            System.out.println("Finished with summary? (y or n)");
-            finished = sc.nextLine();
+        for (int number : numbers) {
+            switch (number) {
+                case 1:
+                    resumeFactory.getName(sc);
+                    break;
+                case 2:
+                    resumeFactory.getSummary(sc);
+                    break;
+                case 3:
+                    resumeFactory.getEducation(sc);
+                    break;
+                case 4:
+                    System.out.println("Experience");
+                    break;
+                case 5:
+                    System.out.println("Project");
+                    break;
+                case 6:
+                    System.out.println("Skills");
+                    break;
+            }
         }
-        Summary sum = new Summary(summary.toString());
-
-        ArrayList<Education> educations = new ArrayList<>();
-        finished = "n";
-        while (finished.equals("n")) {
-            Education education;
-            System.out.print("Add Education: ");
-            System.out.print("*Degree: ");
-            String degree = sc.nextLine();
-
-            System.out.print("*Major: ");
-            String major = sc.nextLine();
-
-            System.out.print("*Graduation Month: ");
-            String month = sc.nextLine();
-
-            System.out.print("*Graduation Year: ");
-            String year = sc.nextLine();
-
-            System.out.print("Minor: ");
-            String minor = sc.nextLine();
-
-            System.out.print("GPA: ");
-            String gpa = sc.nextLine();
-
-            System.out.print("*University: ");
-            String university = sc.nextLine();
-
-            System.out.print("*Univ City");
-            String city = sc.nextLine();
-
-            System.out.print("*Univ State");
-            String state = sc.nextLine();
-
-            education = new Education(university, degree, major, minor, gpa,
-                    city, state, month, year);
-
-            educations.add(education);
-
-            System.out.println("Finished with education? (y or n)");
-            finished = sc.nextLine();
-        }
-
-        System.out.println(name.toString());
-        System.out.println(sum.toString());
-        System.out.println(eduString(educations));
-    }
-
-    private static String eduString(ArrayList<Education> educations) {
-        StringBuilder result = new StringBuilder();
-        for (Education education : educations) {
-            result.append(education.toString());
-        }
-        return result.toString();
+        sc.close();
     }
 }

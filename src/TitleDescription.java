@@ -1,11 +1,6 @@
-public class TitleDescription {
+abstract class TitleDescription {
     private String title;
     private String description;
-
-    public TitleDescription() {
-        this.title = "";
-        this.description = "";
-    }
 
     public TitleDescription(String title, String description) {
         this.title = title;
