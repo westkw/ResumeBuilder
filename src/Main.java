@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -45,7 +46,7 @@ public class Main {
                     resumeFactory.getEducation(sc);
                     break;
                 case 4:
-                    System.out.println("Experience");
+                    ArrayList<Experience> experiences = resumeFactory.getExperience(sc);
                     break;
                 case 5:
                     System.out.println("Project");

@@ -37,7 +37,6 @@ public class ResumeFactory {
         String finished = "n";
         while (finished.equals("n")) {
             Education education;
-            System.out.println("Add Education: ");
             System.out.print("*Degree: ");
             String degree = sc.nextLine();
 
@@ -59,10 +58,10 @@ public class ResumeFactory {
             System.out.print("*University: ");
             String university = sc.nextLine();
 
-            System.out.print("*Univ City");
+            System.out.print("*Univ City: ");
             String city = sc.nextLine();
 
-            System.out.print("*Univ State");
+            System.out.print("*Univ State: ");
             String state = sc.nextLine();
 
             education = new Education(university, degree, major, minor, gpa,
@@ -74,5 +73,37 @@ public class ResumeFactory {
             finished = sc.nextLine();
         }
         return educations;
+    }
+
+    public ArrayList<Experience> getExperience(Scanner sc) {
+        String finished = "n";
+        StringBuilder experience = new StringBuilder();
+        ArrayList<Experience> experiences = new ArrayList<>();
+        while (finished.equals("n")) {
+            System.out.print("Experience Title: ");
+            String title = sc.nextLine();
+            System.out.println("Experience Description: ");
+            String description = sc.nextLine();
+            experiences.add(new Experience(title, description));
+            System.out.println("Finished with experiences? (y or n)");
+            finished = sc.nextLine();
+        }
+        return experiences;
+    }
+
+    public ArrayList<Project> getProject(Scanner sc) {
+        String finished = "n";
+        StringBuilder project = new StringBuilder();
+        ArrayList<Project> projects = new ArrayList<>();
+        while (finished.equals("n")) {
+            System.out.print("Project Title: ");
+            String title = sc.nextLine();
+            System.out.println("Project Description: ");
+            String description = sc.nextLine();
+            projects.add(new Project(title, description));
+            System.out.println("Finished with projects? (y or n)");
+            finished = sc.nextLine();
+        }
+        return projects;
     }
 }
