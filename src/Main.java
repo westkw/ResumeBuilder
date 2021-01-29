@@ -6,6 +6,7 @@ public class Main {
     //The main class that runs the resume builder
     public static void main(String[] args) {
         ResumeFactory resumeFactory = new ResumeFactory();
+        ArrayListStringConstructor listString = new ArrayListStringConstructor();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Welcome to ResumeBuilder!");
@@ -43,10 +44,12 @@ public class Main {
                     resumeFactory.getSummary(sc);
                     break;
                 case 3:
-                    resumeFactory.getEducation(sc);
+                    ArrayList<Education> education = resumeFactory.getEducation(sc);
+                    listString.eduListString(education);
                     break;
                 case 4:
                     ArrayList<Experience> experiences = resumeFactory.getExperience(sc);
+                    System.out.println(listString.expListString(experiences));
                     break;
                 case 5:
                     System.out.println("Project");

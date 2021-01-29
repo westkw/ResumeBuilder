@@ -7,7 +7,7 @@ public class Experience extends TitleDescription {
 
     public String toString() {
         return getTitle() + "\n" +
-                getDescription();
+                getDescription() + "\n";
     }
 
     public String expListString(ArrayList<Experience> experiences) {

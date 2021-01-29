@@ -7,10 +7,10 @@ public class Project extends TitleDescription {
 
     public String toString() {
         return getTitle() + "\n" +
-                getDescription();
+                getDescription() + "\n";
     }
 
-    public String expListString(ArrayList<Project> projects) {
+    public String projListString(ArrayList<Project> projects) {
         StringBuilder result = new StringBuilder();
         for (Project project: projects) {
             result.append(project.toString());
